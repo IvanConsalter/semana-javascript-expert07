@@ -4,8 +4,11 @@ Seja bem vindo(a) à sétima Semana Javascript Expert. Este é o código inicial
 
 Marque esse projeto com uma estrela 🌟
 
+##Live
+Deploy do Projeto Final [clique aqui](https://ivanconsalter.github.io/semana-javascript-expert07/pages/titles)
+
 ## Preview
-<img width=100% src="./initial-template/assets/demo-template-lg.gif">
+<img width=100% src="./assets/demo-template-lg.gif">
 
 ## Pre-reqs
 - Este projeto foi criado usando Node.js v19.6
