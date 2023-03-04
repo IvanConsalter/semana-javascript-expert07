@@ -31,10 +31,10 @@ for (let finger of Finger.all) {
 // Click
 // -----------------------------------------------------------------------------
 ClickGesture.addCurl(Finger.Index, FingerCurl.HalfCurl, 0.8);
-ClickGesture.addCurl(Finger.Index, FingerCurl.FullCurl, 0.5);
+ClickGesture.addCurl(Finger.Index, FingerCurl.FullCurl, 0.9);
 
 ClickGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1.0);
-ClickGesture.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 0.4);
+ClickGesture.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 0.9);
 
 ClickGesture.addCurl(Finger.Middle, FingerCurl.HalfCurl, 1.0);
 ClickGesture.addCurl(Finger.Middle, FingerCurl.FullCurl, 0.9);
