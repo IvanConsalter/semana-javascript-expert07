@@ -13,13 +13,16 @@ import { fingerLookupIndexes, gestureStrings, knownGestures } from "../util/util
 
 const camera = await Camera.init();
 
+const styler = new PseudoStyler();
+
 const [rootPath] = window.location.href.split('/pages/')
 const factory = {
   async initialize() {
     return HandGestureController.initialize({
       camera,
       view: new HandGestureView({
-        fingerLookupIndexes
+        fingerLookupIndexes,
+        styler
       }),
       service: new HandGestureService({
         fingerpose: window.fp,

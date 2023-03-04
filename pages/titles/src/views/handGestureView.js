@@ -3,10 +3,15 @@ export default class HandGestureView {
 	#canvasContext = this.#handsCanvas.getContext("2d");
 
 	#fingerLookupIndexes;
-	constructor({ fingerLookupIndexes }) {
-		this.#handsCanvas.width = globalThis.screen.availWidth;
-		this.#handsCanvas.height = globalThis.screen.availHeight;
+	#styler;
+	constructor({ fingerLookupIndexes, styler }) {
+		this.#handsCanvas.width = globalThis.screen.availWidth
+		this.#handsCanvas.height = globalThis.screen.availHeight
 		this.#fingerLookupIndexes = fingerLookupIndexes
+		this.#styler = styler
+
+		//carrega os estilos assincronamente (evitar travar a tela enquanto carrega)
+		setTimeout(() => styler.loadDocumentStyles(), 200)
 	}
 
 	clearCanvas() {
@@ -63,8 +68,24 @@ export default class HandGestureView {
 				region.lineTo(point.x, point.y);
 			}
 			this.#canvasContext.stroke(region);
+			this.#hoverElement(finger, points);
 		}
 	}
+
+	#hoverElement(finger, points) {
+		if(finger !== "indexFinger") return
+		const tip = points.find(item => item.name === "index_finger_tip")
+		const element = document.elementFromPoint(tip.x, tip.y)
+		if(!element) return;
+		const fn = () => this.#styler.toggleStyle(element, ':hover')
+		fn()
+
+		setTimeout(() => fn(), 500);
+}
+
+loop(fn) {
+		requestAnimationFrame(fn)
+}
 
   clickOnElement(x, y) {
     const element = document.elementFromPoint(x, y)
